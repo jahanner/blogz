@@ -106,11 +106,6 @@ class BlogIndexHandler(BlogHandler):
         else:
             next_page = None
 
-        for post in posts:
-            stuff = db.GqlQuery("SELECT * FROM Post WHERE User.get_by_id(posts.author.key().id()) = {}".format(user))
-
-
-
         # render the page
         t = jinja_env.get_template("blog.html")
         response = t.render(
